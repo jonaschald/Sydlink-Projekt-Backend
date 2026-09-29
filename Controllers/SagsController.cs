@@ -36,7 +36,7 @@ public class SagsController : ControllerBase
             Oprettet = DateTime.Now
         };
 
-        _context.Sag.Add(Sag);
+        _context.Sager.Add(sag);
         _context.SaveChanges();
 
         return CreatedAtAction(nameof(GetBySagsNummer), new { SagsNummer = sag.SagsNummer }, toSagDTO(sag));
