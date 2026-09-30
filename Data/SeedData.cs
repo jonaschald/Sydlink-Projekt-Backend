@@ -54,6 +54,7 @@ public class SeedData
         Kodeord = "TestMedarbejdere1"
       }
     );
+    
     context.SaveChanges();
   }
 
