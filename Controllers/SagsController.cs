@@ -8,23 +8,23 @@ namespace Backend_Rider.Controllers;
 public class SagsController : ControllerBase
 {
     private SydlinkDbContext _context;
-    
+
     public SagsController(SydlinkDbContext context)
     {
         _context = context;
     }
 
-    [HttpGet("{sagsNummer}")]
-    public ActionResult<Sag> GetBySagsNummer(int sagsNummer)
+    [HttpGet("{sagsId}")]
+    public ActionResult<Sag> GetBySagsId(int sagsId)
     {
-        var found = _context.Sager.Find(sagsNummer);
+        var found = _context.Sager.Find(sagsId);
         if (found is null)
         {
             return NotFound();
         }
         return Ok(found);
     }
-    
+
     [HttpPost]
     public ActionResult<SagDTO> Create(CreateSagDTO dto)
     {
@@ -39,12 +39,12 @@ public class SagsController : ControllerBase
         _context.Sager.Add(sag);
         _context.SaveChanges();
 
-        return CreatedAtAction(nameof(GetBySagsNummer), new { SagsNummer = sag.SagsNummer }, toSagDTO(sag));
+        return CreatedAtAction(nameof(GetBySagsId), new { SagsID = sag.SagsId }, toSagDTO(sag));
     }
-    
+
     private static SagDTO toSagDTO(Sag sag) => new()
     {
-        SagsNummer = sag.SagsNummer,
+        SagsId = sag.SagsId,
         Titel = sag.Titel,
         Beskrivelse = sag.Beskrivelse,
         Kategori = sag.Kategori,

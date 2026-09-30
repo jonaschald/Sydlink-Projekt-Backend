@@ -2,16 +2,19 @@
 
 public class Sag
 {
-    public int SagsNummer { get; set; }
+    public int SagsId { get; set; }
     public string Titel { get; set; } = string.Empty;
     public string Beskrivelse { get; set; } = string.Empty;
     public SagsKategori Kategori { get; set; }
     public SagsStatus Status { get; set; }
-    public int KundeNummer { get; set; }
-    public Kunde? Kunde { get; set; }
-    public DateTime Oprettet { get; set; } = DateTime.Now;
-    public Medarbejder? Medarbejder { get; set; } 
     public SagsPrioritet Prioritet { get; set; }
+    public DateTime Oprettet { get; set; } = DateTime.Now;
+    public int KundeId { get; set; }
+    public Kunde? Kunde { get; set; }
+    public int? MedarbejderId  { get; set; }
+    public Medarbejder? Medarbejder { get; set; }
+
+    public ICollection<Besked> beskeder { get; set; } = [];
 }
 
 public enum SagsKategori
