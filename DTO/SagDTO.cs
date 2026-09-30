@@ -4,7 +4,7 @@ namespace Backend_Rider.DTO;
 
 public class SagDTO
 {
-    public int SagsId { get; set; }
+    public int SagId { get; set; }
     public string Titel { get; set; } = string.Empty;
     public string Beskrivelse { get; set; } = string.Empty;
     public SagsKategori Kategori { get; set; }

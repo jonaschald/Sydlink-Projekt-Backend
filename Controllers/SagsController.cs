@@ -14,10 +14,10 @@ public class SagsController : ControllerBase
         _context = context;
     }
 
-    [HttpGet("{sagsId}")]
-    public ActionResult<Sag> GetBySagsId(int sagsId)
+    [HttpGet("{sagId}")]
+    public ActionResult<Sag> GetBySagId(int sagId)
     {
-        var found = _context.Sager.Find(sagsId);
+        var found = _context.Sager.Find(sagId);
         if (found is null)
         {
             return NotFound();
@@ -39,12 +39,12 @@ public class SagsController : ControllerBase
         _context.Sager.Add(sag);
         _context.SaveChanges();
 
-        return CreatedAtAction(nameof(GetBySagsId), new { SagsID = sag.SagsId }, toSagDTO(sag));
+        return CreatedAtAction(nameof(GetBySagId), new { SagID = sag.SagId }, toSagDTO(sag));
     }
 
     private static SagDTO toSagDTO(Sag sag) => new()
     {
-        SagsId = sag.SagsId,
+        SagId = sag.SagId,
         Titel = sag.Titel,
         Beskrivelse = sag.Beskrivelse,
         Kategori = sag.Kategori,
