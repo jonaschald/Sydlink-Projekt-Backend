@@ -11,7 +11,7 @@ namespace Backend_Rider.Controllers;
 public class SagsController : ControllerBase
 {
     private SydlinkDbContext _context;
-
+    
     public SagsController(SydlinkDbContext context)
     {
         _context = context;
