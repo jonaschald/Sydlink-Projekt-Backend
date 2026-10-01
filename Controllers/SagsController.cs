@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Backend_Rider.Controllers;
 
+[ApiController]
+[Route("api/[controller]")]
+
 public class SagsController : ControllerBase
 {
     private SydlinkDbContext _context;
@@ -14,6 +17,12 @@ public class SagsController : ControllerBase
         _context = context;
     }
 
+    [HttpGet]
+    public ActionResult<List<Sag>> Get()
+    {
+        return Ok(_context.Sager.ToList());
+    }
+    
     [HttpGet("{sagId}")]
     public ActionResult<Sag> GetBySagId(int sagId)
     {
