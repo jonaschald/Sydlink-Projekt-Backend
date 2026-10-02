@@ -17,7 +17,7 @@ public class SagsController : ControllerBase
         _context = context;
     }
 
-    [HttpGet]
+    [HttpGet("/api/getSager")]
     public ActionResult<List<Sag>> Get()
     {
         return Ok(_context.Sager.ToList());
